@@ -21,10 +21,38 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+<<<<<<< HEAD
 // get the product id from the query string
+=======
+
+>>>>>>> 4b6ae7e14200ed016ebb1b0152193b0971ba943e
 export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get(param);
+<<<<<<< HEAD
   return product
 }
+=======
+  return product;
+}
+
+export function renderListWithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false
+) {
+  // Clear the element if requested
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+
+  // Transform the list into HTML strings using the template function
+  const htmlStrings = list.map(templateFn);
+
+  // Insert the HTML into the parent element
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
+>>>>>>> 4b6ae7e14200ed016ebb1b0152193b0971ba943e
