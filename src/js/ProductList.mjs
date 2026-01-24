@@ -1,37 +1,62 @@
-import { renderListWithTemplate } from './utils.mjs';
+import { renderListWithTemplate } from "./utils.mjs";
 
-// Template function for product cards
 function productCardTemplate(product) {
-    return `<li class="product-card">
-    <a href="../product_pages/index.html?product=${product.Id}">
-      <img
-        src="${product.Image}"
-        alt="${product.Name}"
-      />
-      <h3 class="card__brand">${product.Brand.Name}</h3>
-      <h2 class="card__name">${product.NameWithoutBrand}</h2>
-      <p class="product-card__price">$${product.FinalPrice}</p>
-    </a>
-  </li>`;
+  return `
+    <li class="product-card">
+      <a href="product_pages/?product=${product.Id}">
+        <img src="${product.Image}" alt="${product.Name}">
+        <h2>${product.Brand.Name}</h2>
+        <h3>${product.Name}</h3>
+        <p class="product-card__price">$${product.FinalPrice}</p>
+      </a>
+      <button class="favorite-btn" data-id="${product.Id}">
+      ♡ Add to Favorites
+      </button>
+    </li>
+    `;
 }
 
 export default class ProductList {
-    constructor(category, dataSource, listElement) {
-        // You passed in this information to make the class as reusable as possible.
-        // Being able to define these things when you use the class will make it very flexible
-        this.category = category;
-        this.dataSource = dataSource;
-        this.listElement = listElement;
-    }
+  constructor(category, dataSource, listElement) {
+    this.category = category;
+    this.dataSource = dataSource;
+    this.listElement = listElement;
+  }
 
-    async init() {
-        // the dataSource will return a Promise...so you can use await to resolve it.
-        const list = await this.dataSource.getData();
-        // render the list
-        this.renderList(list);
-    }
+  async init() {
+    const list = await this.dataSource.getData();
+    this.renderList(list);
+  }
 
-    renderList(list) {
-        renderListWithTemplate(productCardTemplate, this.listElement, list);
-    }
+  renderList(list) {
+    // const htmlStrings = list.map(productCardTemplate);
+    // this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
+
+    // apply use new utility function instead of the commented code above
+    renderListWithTemplate(productCardTemplate, this.listElement, list);
+
+
+  }
+
+}
+
+
+
+function addFavoriteListener() {
+  document.querySelectorAll(".favorite-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const id = e.target.dataset.id;
+      saveFavorite(id);
+      e.target.textContent = "♥ Saved";
+    });
+  });
+}
+
+function saveFavorite(productId) {
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  
+  if (!favorites.includes(productId)) {
+    favorites.push(productId);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }
 }
