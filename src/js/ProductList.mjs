@@ -4,7 +4,7 @@ import {  renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
   // Adjust path for images to always point to 'public/images/...'
-  // const imagePath = product.Image.replace('../images/', './public/images/');
+  const imagePath = product.Image.replace('../images/', './public/images/');
 
   return `
     <li class="product-card">
