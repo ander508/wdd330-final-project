@@ -27,7 +27,7 @@ export default class ProductDetails {
   }
 
   renderProductDetails() {
-  const main = document.querySelector(".product-detail");
+  const main = document.querySelector(".divider");
   main.innerHTML = productDetailsTemplate(this.product);
 }
 
