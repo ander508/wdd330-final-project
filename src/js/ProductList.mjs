@@ -4,7 +4,7 @@ function productCardTemplate(product) {
   return `
     <li class="product-card">
       <a href="product_pages/?product=${product.Id}">
-        <img src="/wdd330-team14/src/public/${product.Image}" alt="${product.Name}">
+        <img src="/wdd330-team14/src/${product.Image}" alt="${product.Name}">
         <h2>${product.Brand.Name}</h2>
         <h3>${product.Name}</h3>
         <p class="product-card__price">$${product.FinalPrice}</p>
