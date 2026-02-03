@@ -22,6 +22,33 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
+export async function loadTemplate(path) {
+  const res = await fetch(path);
+  if (res.ok) {
+    const template = await res.text();
+    return template;
+  } else {
+    throw new Error("Could not load template");
+  }
+}
+
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.insertAdjacentHTML("afterbegin", template);
+  if (callback) {
+    callback(data);
+  }
+}
+
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate("/partials/header.html");
+  const footerTemplate = await loadTemplate("/partials/footer.html");
+  const headerElement = document.querySelector("#main-header");
+  const footerElement = document.querySelector("#main-footer");
+
+  renderWithTemplate(headerTemplate, headerElement);
+  renderWithTemplate(footerTemplate, footerElement);
+}
+
 // get the product id from the query string
 export function getParam(param) {
   const queryString = window.location.search;
