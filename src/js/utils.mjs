@@ -32,23 +32,6 @@ export async function loadTemplate(path) {
   }
 }
 
-export function renderWithTemplate(template, parentElement, data, callback) {
-  parentElement.insertAdjacentHTML("afterbegin", template);
-  if (callback) {
-    callback(data);
-  }
-}
-
-export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate("/partials/header.html");
-  const footerTemplate = await loadTemplate("/partials/footer.html");
-  const headerElement = document.querySelector("#main-header");
-  const footerElement = document.querySelector("#main-footer");
-
-  renderWithTemplate(headerTemplate, headerElement);
-  renderWithTemplate(footerTemplate, footerElement);
-}
-
 // get the product id from the query string
 export function getParam(param) {
   const queryString = window.location.search;
@@ -67,30 +50,20 @@ export function renderListWithTemplate(template, parentElement, list, position =
 }
 
 
-export function renderWithTemplate(template, parentElement, data, callback) {
+function renderWithTemplate(template, parentElement, data, callback) {
   parentElement.innerHTML = template;
   if (callback) {
     callback(data)
   }
 }
 
-export async function loadTemplate(path) {
-  const response = await fetch(path)
-  const template = await response.text()
-  return template
-}
-
 export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate("../partials/header.html")
-  const footerTemplate = await loadTemplate("../partials/footer.html")
+  const headerTemplate = await loadTemplate("/public/partials/header.html");
+  const footerTemplate = await loadTemplate("/public/partials/footer.html");
 
+  const headerElement = document.querySelector("#header");
+  const footerElement = document.querySelector("#footer");
 
-  const headerElement = document.querySelector("#header")
-
-
-  const footerElement = document.querySelector("#footer")
-
-  renderWithTemplate(headerTemplate, headerElement)
-  renderWithTemplate(footerTemplate, footerElement)
-
+  headerElement.innerHTML = headerTemplate;
+  footerElement.innerHTML = footerTemplate;
 }
