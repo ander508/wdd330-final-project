@@ -22,7 +22,6 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-
 export async function loadTemplate(path) {
   const res = await fetch(path);
   if (res.ok) {
@@ -32,7 +31,6 @@ export async function loadTemplate(path) {
     throw new Error("Could not load template");
   }
 }
-
 
 // get the product id from the query string
 export function getParam(param) {

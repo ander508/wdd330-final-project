@@ -31,9 +31,9 @@ function renderCart() {
 }
 
 // Event delegation for remove buttons
-document.querySelector(".product-list").addEventListener("click", (e) => {
-  if (e.target.classList.contains("remove-item")) {
-    const id = e.target.dataset.id;
+document.querySelector(".product-list").addEventListener("click", (event) => {
+  if (event.target.classList.contains("remove-item")) {
+    const id = event.target.dataset.id;
     removeFromCart(id);
   }
 });
