@@ -3,68 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sleep Outside | Home</title>
+    <title>Music Discovery</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="./js/main.js" type="module"></script>
+    <script type="module" src="./js/main.js" defer></script>
   </head>
-
   <body>
-    <header class="divider" id="header"></header>
-    <main class="divider">
-      <div class="hero">
-        <img
-          src="./images/banner-sm.jpg"
-          srcset="./mages/banner-sm.jpg 500w, ./images/banner.jpg"
-          alt="image of a high mountain lake"
-        />
-        <div class="logo logo--square">
-          <img src="./images/noun_Tent_2517.svg" alt="tent image for logo" />
-          <div>Sleep<span class="highlight">Outside</span></div>
-        </div>
-        <div class="mission">
-          <p>
-            Our mission is to provide you with everything you need to sleep
-            outside comfortably at an affordable price.
-          </p>
-        </div>
-      </div>
-      <section class="categories">
-        <h2>Shop by Category</h2>
-
-        <div class="category-grid">
-          <div class="category-card">
-            <a href="./product-listing/?category=tents">
-              <img src="./images/category-tents.svg" alt="Tents" />
-              <p>Tents</p>
-            </a>
-          </div>
-
-          <div class="category-card">
-            <a href="/product-listing/?category=backpacks">
-              <img src="./images/category-backpacks.svg" alt="Backpacks" />
-              <p>Backpacks</p>
-            </a>
-          </div>
-
-          <div class="category-card">
-            <a href="/product-listing/?category=sleepingbags">
-              <img
-                src="./images/category-sleepingbags.svg"
-                alt="Sleeping Bags"
-              />
-              <p>Sleeping Bags</p>
-            </a>
-          </div>
-
-          <div class="category-card">
-            <a href="/product-listing/?category=hammocks">
-              <img src="./images/category-hammocks.svg" alt="Hammocks" />
-              <p>Hammocks</p>
-            </a>
-          </div>
-        </div>
-      </section>
+    <header id="header"></header>
+    <main>
+      <h1>Top Tracks</h1>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search for songs or artists..."
+      />
+      <button id="searchBtn">Search</button>
+      <ul id="trackList"></ul>
     </main>
+    <h2>Favorites</h2>
+    <ul id="favoritesList"></ul>
     <footer id="footer"></footer>
   </body>
 </html>
