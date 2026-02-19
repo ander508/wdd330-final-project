@@ -1,35 +1,3 @@
-// const PROXY = "https://thingproxy.freeboard.io/fetch/";
-// const BASE_URL = "https://api.deezer.com";
-
-// /**
-//  * Get top tracks from Deezer
-//  */
-// export async function getTopTracks() {
-//   const response = await fetch(`${PROXY}${BASE_URL}/chart/0/tracks`);
-//   const data = await response.json();
-//   return data.data; // return array of tracks
-// }
-
-// /**
-//  * Search tracks by query
-//  */
-// export async function searchTracks(query) {
-//   const response = await fetch(`${PROXY}${BASE_URL}/search?q=${encodeURIComponent(query)}`);
-//   const data = await response.json();
-//   return data.data; // return array directly
-// }
-
-// /**
-//  * Get a single track by ID
-//  */
-// export async function getTrackById(id) {
-//   if (!id) throw new Error("Track ID is required");
-
-//   const response = await fetch(`${PROXY}${BASE_URL}/track/${id}`);
-//   const data = await response.json();
-//   return data; // single track object
-// }
-
 const PROXY = "https://cors-anywhere.herokuapp.com/"; // dev-only
 const BASE_URL = "https://api.deezer.com";
 
